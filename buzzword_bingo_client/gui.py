@@ -1,6 +1,31 @@
 """:mod:`buzzword_bingo_client.gui` --- Client graphics
 
 Displays the bingo board.
+
+.. todo::
+
+   Add borders to the labels.
+
+.. todo::
+
+   Make the labels clickable and have an X appear over them.
+   
+.. todo::
+
+   Connect the labels' click events to API calls.
+   
+.. todo::
+
+   Use the actual API, which has yet to be completed.
+   
+.. todo::
+
+   Add message boxes to win the game.
+   
+.. todo::
+   
+   Allow users to compose words and boards and submit them.
+
 """
 
 from PySide import QtCore, QtGui
