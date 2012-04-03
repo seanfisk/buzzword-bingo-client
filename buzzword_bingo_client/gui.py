@@ -5,12 +5,15 @@ Displays the bingo board.
 
 from PySide import QtCore, QtGui
 from about import AboutDialog
+import metadata
 
 class MainWindow(QtGui.QMainWindow):
     """Main application window."""
     def __init__(self, parent=None):
         """Construct the window."""
         super(MainWindow, self).__init__(parent)
+
+	self.setWindowTitle(metadata.nice_title)
         
         self.menu_bar = QtGui.QMenuBar()
         self.game_menu = self.menu_bar.addMenu('&Game')
