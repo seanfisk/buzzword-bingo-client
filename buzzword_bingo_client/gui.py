@@ -7,6 +7,8 @@ from PySide import QtCore, QtGui
 from about import AboutDialog
 import metadata
 
+SIZE = 5
+
 class MainWindow(QtGui.QMainWindow):
     """Main application window."""
     def __init__(self, parent=None):
@@ -23,6 +25,21 @@ class MainWindow(QtGui.QMainWindow):
         self.about_action = self.help_menu.addAction('&About')
         self.about_action.triggered.connect(self.about)
         self.setMenuBar(self.menu_bar)
+
+        self.central_widget = QtGui.QWidget()
+        self.setCentralWidget(self.central_widget)
+        
+        self.layout = QtGui.QGridLayout(self.central_widget)
+
+        middle = SIZE // 2
+        for row in xrange(SIZE):
+            for col in xrange(SIZE):
+                if row == middle and col == middle:
+                    text = 'FREE SPACE'
+                else:
+                    text = 'Cloud Computing'
+                self.layout.addWidget(QtGui.QLabel(text, self.central_widget), row, col, QtCore.Qt.AlignHCenter)
+        
 
     @QtCore.Slot()
     def about(self):
