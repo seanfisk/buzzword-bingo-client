@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+
+# Buzzword Bingo main
+
+import sys
+
+from PySide import QtGui
+
+from buzzword_bingo_client import metadata
+from buzzword_bingo_client.gui import MainWindow
+
+def main(argv=None):
+    if argv is None:
+        argv = sys.argv
+    app = QtGui.QApplication(argv)
+    app.setOrganizationName('GVSU')
+    app.setOrganizationDomain('cis.gvsu.edu')
+    app.setApplicationName(metadata.nice_title)
+    app.setApplicationVersion(metadata.version)
+    window = MainWindow()
+    window.show()
+    return app.exec_()
+
+if __name__ == '__main__':
+    sys.exit(main())
