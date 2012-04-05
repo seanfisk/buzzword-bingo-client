@@ -40,7 +40,7 @@ class MainWindow(QtGui.QMainWindow):
         """Construct the window."""
         super(MainWindow, self).__init__(parent)
 
-	self.setWindowTitle(metadata.nice_title)
+        self.setWindowTitle(metadata.nice_title)
         
         self.menu_bar = QtGui.QMenuBar()
         self.game_menu = self.menu_bar.addMenu('&Game')
@@ -51,16 +51,18 @@ class MainWindow(QtGui.QMainWindow):
         self.about_action.triggered.connect(self.about)
         self.setMenuBar(self.menu_bar)
 
-        self.setCentralWidget(QtGui.QWidget())
+        self.setCentralWidget(QtGui.QWidget(self))
 
         # set the background and frame color for the labels
         palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.WindowText, QtCore.Qt.yellow)
         palette.setColor(QtGui.QPalette.Window, QtCore.Qt.red)
         palette.setColor(QtGui.QPalette.Light, QtCore.Qt.blue)
         palette.setColor(QtGui.QPalette.Dark, QtCore.Qt.blue)
-        self.centralWidget().setPalette(palette)
 
         self.layout = QtGui.QGridLayout(self.centralWidget())
+        self.layout.setSpacing(0)
+        self.layout.setContentsMargins(QtCore.QMargins())
 
         middle = SIZE // 2
         for row in xrange(SIZE):
@@ -70,12 +72,15 @@ class MainWindow(QtGui.QMainWindow):
                 else:
                     text = 'Cloud Computing'
                 label = QtGui.QLabel(text, self.centralWidget())
-                # the following line is nesscary to paint the background of the widget
+                # the following line is nesscary to paint the background of the
+                # widget
                 label.setAutoFillBackground(True)
+                label.setPalette(palette)
                 label.setFrameShape(QtGui.QFrame.Box)
                 label.setFrameShadow(QtGui.QFrame.Raised)
+                label.setAlignment(QtCore.Qt.AlignHCenter | QtCore.Qt.AlignVCenter)
 
-                self.layout.addWidget(label, row, col, QtCore.Qt.AlignHCenter)
+                self.layout.addWidget(label, row, col)
         
 
     @QtCore.Slot()
