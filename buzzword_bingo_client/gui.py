@@ -8,7 +8,7 @@ Displays the bingo board.
 
 .. todo::
 
-   Make the labels clickable and have an X appear over them.
+   Make the labels clickable and have an X appear when clicked.
    
 .. todo::
 
@@ -51,10 +51,16 @@ class MainWindow(QtGui.QMainWindow):
         self.about_action.triggered.connect(self.about)
         self.setMenuBar(self.menu_bar)
 
-        self.central_widget = QtGui.QWidget()
-        self.setCentralWidget(self.central_widget)
-        
-        self.layout = QtGui.QGridLayout(self.central_widget)
+        self.setCentralWidget(QtGui.QWidget())
+
+        # set the background and frame color for the labels
+        palette = QtGui.QPalette()
+        palette.setColor(QtGui.QPalette.Window, QtCore.Qt.red)
+        palette.setColor(QtGui.QPalette.Light, QtCore.Qt.blue)
+        palette.setColor(QtGui.QPalette.Dark, QtCore.Qt.blue)
+        self.centralWidget().setPalette(palette)
+
+        self.layout = QtGui.QGridLayout(self.centralWidget())
 
         middle = SIZE // 2
         for row in xrange(SIZE):
@@ -63,7 +69,13 @@ class MainWindow(QtGui.QMainWindow):
                     text = 'FREE SPACE'
                 else:
                     text = 'Cloud Computing'
-                self.layout.addWidget(QtGui.QLabel(text, self.central_widget), row, col, QtCore.Qt.AlignHCenter)
+                label = QtGui.QLabel(text, self.centralWidget())
+                # the following line is nesscary to paint the background of the widget
+                label.setAutoFillBackground(True)
+                label.setFrameShape(QtGui.QFrame.Box)
+                label.setFrameShadow(QtGui.QFrame.Raised)
+
+                self.layout.addWidget(label, row, col, QtCore.Qt.AlignHCenter)
         
 
     @QtCore.Slot()
