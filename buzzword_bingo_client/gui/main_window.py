@@ -30,7 +30,10 @@ Displays the bingo board.
 
 from PySide import QtCore, QtGui
 from about import AboutDialog
+from board_widget import BoardWidget
 from buzzword_bingo_client import metadata
+from buzzword_bingo_client.core.board import Board
+from buzzword_bingo_client.core.api import API
 
 SIZE = 5
 COLOR_UNCOVERED = QtGui.QColor(244, 244, 244)
@@ -103,29 +106,34 @@ class MainWindow(QtGui.QMainWindow):
         self.about_action.triggered.connect(self.about)
         self.setMenuBar(self.menu_bar)
 
-        self.setCentralWidget(QtGui.QWidget(self))
+        self.api = API('http://localhost:8000/')
 
-        self.layout = QtGui.QGridLayout(self.centralWidget())
-        self.layout.setSpacing(0)
-        self.layout.setContentsMargins(QtCore.QMargins())
+        words = [word['word'] for word in self.api.all_boards()[0]['words']]
+        print words
+        
+        self.board_widget = BoardWidget(self)
+        self.setCentralWidget(self.board_widget)
+        self.board = Board(words)
+        self.board_widget.set_board(self.board)
 
-        middle = SIZE // 2
-        for row in xrange(SIZE):
-            for col in xrange(SIZE):
-                if row == middle and col == middle:
-                    text = 'FREE SPACE'
-                else:
-                    text = 'Cloud Computing'
-                label = BoardLabel(row, col, text, self.centralWidget())
-                label.clicked.connect(self.label_clicked)
-                self.layout.addWidget(label, row, col)
+        # self.setCentralWidget(QtGui.QWidget(self))
+
+        # self.layout = QtGui.QGridLayout(self.centralWidget())
+        # self.layout.setSpacing(0)
+        # self.layout.setContentsMargins(QtCore.QMargins())
+
+        # middle = SIZE // 2
+        # for row in xrange(SIZE):
+        #     for col in xrange(SIZE):
+        #         if row == middle and col == middle:
+        #             text = 'FREE SPACE'
+        #         else:
+        #             text = 'Cloud Computing'
+        #         label = BoardLabel(row, col, text, self.centralWidget())
+        #         label.clicked.connect(self.label_clicked)
+        #         self.layout.addWidget(label, row, col)
         
     @QtCore.Slot()
     def about(self):
         """Create and show the about dialog."""
         AboutDialog(self).exec_()
-
-    @QtCore.Slot(int, int)
-    def label_clicked(self, row, col):
-        print row, col
-
