@@ -55,10 +55,11 @@ class MainWindow(QtGui.QMainWindow):
 
         # set the background and frame color for the labels
         palette = QtGui.QPalette()
-        palette.setColor(QtGui.QPalette.WindowText, QtCore.Qt.yellow)
-        palette.setColor(QtGui.QPalette.Window, QtCore.Qt.red)
-        palette.setColor(QtGui.QPalette.Light, QtCore.Qt.blue)
-        palette.setColor(QtGui.QPalette.Dark, QtCore.Qt.blue)
+        palette.setColor(QtGui.QPalette.WindowText, QtCore.Qt.black)
+        palette.setColor(QtGui.QPalette.Window,
+                         QtGui.QColor(244, 244, 244))
+        palette.setColor(QtGui.QPalette.Light, QtCore.Qt.black)
+        palette.setColor(QtGui.QPalette.Dark, QtCore.Qt.black)
 
         self.layout = QtGui.QGridLayout(self.centralWidget())
         self.layout.setSpacing(0)
