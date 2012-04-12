@@ -98,6 +98,8 @@ class BoardWidget(QtGui.QWidget):
     def label_clicked(self, row, col):
         self.board[row, col].covered = True
         if self.board.is_winning():
-            print 'You won!'
+            QtGui.QMessageBox(QtGui.QMessageBox.Information, 'Result',
+                              'You win!', QtGui.QMessageBox.Ok,
+                self).exec_()
 
                 

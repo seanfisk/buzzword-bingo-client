@@ -109,29 +109,11 @@ class MainWindow(QtGui.QMainWindow):
         self.api = API('http://localhost:8000/')
 
         words = [word['word'] for word in self.api.all_boards()[0]['words']]
-        print words
         
         self.board_widget = BoardWidget(self)
         self.setCentralWidget(self.board_widget)
         self.board = Board(words)
         self.board_widget.set_board(self.board)
-
-        # self.setCentralWidget(QtGui.QWidget(self))
-
-        # self.layout = QtGui.QGridLayout(self.centralWidget())
-        # self.layout.setSpacing(0)
-        # self.layout.setContentsMargins(QtCore.QMargins())
-
-        # middle = SIZE // 2
-        # for row in xrange(SIZE):
-        #     for col in xrange(SIZE):
-        #         if row == middle and col == middle:
-        #             text = 'FREE SPACE'
-        #         else:
-        #             text = 'Cloud Computing'
-        #         label = BoardLabel(row, col, text, self.centralWidget())
-        #         label.clicked.connect(self.label_clicked)
-        #         self.layout.addWidget(label, row, col)
         
     @QtCore.Slot()
     def about(self):

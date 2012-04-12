@@ -75,7 +75,3 @@ class API(object):
                 item[key] = self._fill_item(
                     yaml.safe_load(self.session.get(val).text))
         return item
-
-if __name__ == '__main__':
-    api = API('http://localhost:8000/')
-    print(api.all_boards())
