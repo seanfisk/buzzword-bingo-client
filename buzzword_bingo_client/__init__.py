@@ -1,5 +1,4 @@
 """:mod:`buzzword_bingo_client` --- Client for the Buzzword Bingo app
-
 """
 
 import metadata

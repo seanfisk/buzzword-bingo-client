@@ -30,7 +30,7 @@ Displays the bingo board.
 
 from PySide import QtCore, QtGui
 from about import AboutDialog
-import metadata
+from buzzword_bingo_client import metadata
 
 SIZE = 5
 
@@ -82,7 +82,6 @@ class MainWindow(QtGui.QMainWindow):
 
                 self.layout.addWidget(label, row, col)
         
-
     @QtCore.Slot()
     def about(self):
         """Create and show the about dialog."""

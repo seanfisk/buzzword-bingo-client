@@ -7,7 +7,7 @@ import sys
 from PySide import QtGui
 
 from buzzword_bingo_client import metadata
-from buzzword_bingo_client.gui import MainWindow
+from buzzword_bingo_client.gui.main_window import MainWindow
 
 def main(argv=None):
     if argv is None:

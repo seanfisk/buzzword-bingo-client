@@ -2,7 +2,7 @@
 """
 
 from PySide import QtCore, QtGui
-import metadata
+from buzzword_bingo_client import metadata
 
 class AboutDialog(QtGui.QDialog):
     """Shows information about the program."""
