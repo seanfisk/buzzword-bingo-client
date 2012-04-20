@@ -9,22 +9,6 @@ buzzword_bingo_client Package
     :undoc-members:
     :show-inheritance:
 
-:mod:`about` Module
--------------------
-
-.. automodule:: buzzword_bingo_client.about
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-:mod:`gui` Module
------------------
-
-.. automodule:: buzzword_bingo_client.gui
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
 :mod:`metadata` Module
 ----------------------
 
@@ -32,4 +16,12 @@ buzzword_bingo_client Package
     :members:
     :undoc-members:
     :show-inheritance:
+
+Subpackages
+-----------
+
+.. toctree::
+
+    buzzword_bingo_client.core
+    buzzword_bingo_client.gui
 
