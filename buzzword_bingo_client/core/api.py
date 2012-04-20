@@ -1,6 +1,8 @@
 """:mod:`buzzword_bingo_client.core.api` --- API to interface with the REST API
 
-.. todo:: Add more logging to the API module.
+.. todo::
+
+    Add more logging to the API module.
 
 """
 

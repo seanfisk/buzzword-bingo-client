@@ -7,6 +7,7 @@ buzzword_bingo_client Package
 .. automodule:: buzzword_bingo_client.__init__
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 
 :mod:`metadata` Module
@@ -15,6 +16,7 @@ buzzword_bingo_client Package
 .. automodule:: buzzword_bingo_client.metadata
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 
 Subpackages

@@ -7,6 +7,7 @@ gui Package
 .. automodule:: buzzword_bingo_client.gui
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 
 :mod:`about` Module
@@ -15,6 +16,7 @@ gui Package
 .. automodule:: buzzword_bingo_client.gui.about
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 
 :mod:`board_widget` Module
@@ -23,6 +25,7 @@ gui Package
 .. automodule:: buzzword_bingo_client.gui.board_widget
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 
 :mod:`main_window` Module
@@ -31,5 +34,6 @@ gui Package
 .. automodule:: buzzword_bingo_client.gui.main_window
     :members:
     :undoc-members:
+    :special-members:
     :show-inheritance:
 

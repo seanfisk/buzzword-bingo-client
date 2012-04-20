@@ -27,7 +27,10 @@ class Board(object):
         :param rows: list of words
         :type rows: :class:`list` of :class:`str`
 
-        .. todo:: Error handling for the dimensions.
+        .. todo::
+
+            Error handling for the dimensions.
+            
         """
         dimension = int(math.sqrt(len(words) + 1))
         middle = dimension // 2
@@ -58,7 +61,10 @@ class Board(object):
         :returns: the specified cell
         :rtype: :class:`Cell`
         
-        .. todo:: Error checking.
+        .. todo::
+
+            Error checking.
+            
         """
         return self.matrix[key[0]][key[1]]
 
