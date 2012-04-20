@@ -4,23 +4,11 @@ Displays the bingo board.
 
 .. todo::
 
-   Add borders to the labels.
-
-.. todo::
-
-   Make the labels clickable and have an X appear when clicked.
-   
-.. todo::
-
    Connect the labels' click events to API calls.
    
 .. todo::
 
    Use the actual API, which has yet to be completed.
-   
-.. todo::
-
-   Add message boxes to win the game.
    
 .. todo::
    
