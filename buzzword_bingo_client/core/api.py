@@ -4,6 +4,11 @@
 
     Add more logging to the API module.
 
+.. todo::
+
+    Definitely look at `Slumber <http://slumber.in/>`_ for creating APIs instead
+    of the horrible mess I have right now.
+
 """
 
 from __future__ import print_function
