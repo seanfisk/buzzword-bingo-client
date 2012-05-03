@@ -3,9 +3,39 @@
 
 from __future__ import division
 import math
-from textwrap import dedent
 
 FREE_SPACE_TEXT = 'FREE'
+
+# class BoardItem(object):
+#     """Representation of a board in the list of available boards."""
+#     def __init__(self, name, url, word_urls, win_condition_urls):
+#         """Construct the board item.
+        
+#         :param name: name of the board
+#         :type name: :class:`str`
+#         :param url: uniform resource locator for the board instance
+#         :type url: :class:`str`
+#         :param word_urls: list of URLs to words
+#         :type word_urls: :class:`list` of :class:`str`
+#         :param win_condition_urls: list of URLs to win conditions
+#         :type win_condition_urls: :class:`list` of :class:`str`
+#         """
+#         self.name = name
+#         self.url = url
+#         self.words = None
+#         self.word_urls = word_urls
+#         self.win_condition_urls = None
+#         self.win_condition_urls = win_condition_urls
+
+#     def load(self):
+#         """Load the board words and win conditions with the supplied URLs."""
+#         self.words = []
+#         for url in self.word_urls:
+#             self.words.append(self.api.load_word(url))
+
+#         self.win_conditions = []
+#         for url in self.win_condition_urls:
+#             self.win_conditions.append(self.api.load_win_condition(url))
 
 class DimensionsError(Exception):
     """Error that is raised when a list of words of an invalid length is
@@ -26,15 +56,13 @@ class DimensionsError(Exception):
         :return: the string representation
         :rtype: :class:`str`
         """
-        return dedent('''
-        Word list length must be one less than the square of an odd number and 
-        be greater than or equal to 9 (3x3 board). Odd edge size is to 
-        accomodate the free space. The length given was: ''' +
-        str(self.length)).replace('\n', '')
-        
+        return ('Word list length must be one less than the square of an odd '
+        'number and be greater than or equal to 9 (3x3 board). Odd edge size is '
+        'to accomodate the free space. The length given was: ')
+    
 
-class Cell(object):
-    """Single Bingo cell."""
+class ActiveCell(object):
+    """Single Bingo cell in the active board."""
     def __init__(self, word, covered=False):
         """Construct a cell with a word an optionally cover it.
         
@@ -45,8 +73,8 @@ class Cell(object):
         self.covered = covered
 
 
-class Board(object):
-    """Matrix of cells."""
+class ActiveBoard(object):
+    """Matrix of cells in the active board."""
 
     MINIMUM_BOARD_DIMENSION = 3
     """Minimum dimension of the square board."""
@@ -74,9 +102,9 @@ class Board(object):
             col_list = []
             for col in xrange(dimension):
                 if row == middle and col == middle:
-                    cell = Cell(FREE_SPACE_TEXT, True)
+                    cell = ActiveCell(FREE_SPACE_TEXT, True)
                 else:
-                    cell = Cell(words.pop())
+                    cell = ActiveCell(words.pop())
                 col_list.append(cell)
             self.matrix.append(col_list)
 

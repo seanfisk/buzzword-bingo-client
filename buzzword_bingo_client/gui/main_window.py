@@ -18,9 +18,9 @@ Displays the bingo board.
 
 from PySide import QtCore, QtGui
 from about import AboutDialog
-from board_widget import BoardWidget
+from buzzword_bingo_client.gui.board_widget import BoardWidget
+from buzzword_bingo_client.gui.board_browser_widget import BoardBrowserWidget
 from buzzword_bingo_client import metadata
-from buzzword_bingo_client.core.board import Board
 from buzzword_bingo_client.core.api import API
 
 SIZE = 5
@@ -66,8 +66,6 @@ class BoardLabel(QtGui.QLabel):
     def mousePressEvent(self, event):
         """Handle mouse press events.
 
-        clicked.emt
-        
         :param event: the mouse press event
         :type event: :class:`QtGui.QMouseEvent`
         """
@@ -96,12 +94,14 @@ class MainWindow(QtGui.QMainWindow):
 
         self.api = API('http://localhost:8000/')
 
-        words = [word['word'] for word in self.api.all_boards()[0]['words']]
+        self.board_browser_widget = BoardBrowserWidget(self.api)
+        self.setCentralWidget(self.board_browser_widget)
+        # words = [word['word'] for word in self.api.all_boards()[0]['words']]
         
-        self.board_widget = BoardWidget(self)
-        self.setCentralWidget(self.board_widget)
-        self.board = Board(words)
-        self.board_widget.set_board(self.board)
+        # self.board_widget = BoardWidget(self)
+        # self.setCentralWidget(self.board_widget)
+        # self.board = Board(words)
+        # self.board_widget.set_board(self.board)
         
     @QtCore.Slot()
     def about(self):
